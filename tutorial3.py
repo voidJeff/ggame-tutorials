@@ -20,12 +20,17 @@ cover = Sprite(cover_asset, (20, 20))
 
 # A ball! This is already in the ggame-tutorials repository
 ball_asset = ImageAsset("images/orb-150545_640.png")
+beach_asset = ImageAsset("images/beach-ball-575425_640.png")
 ball = Sprite(ball_asset, (0, 0))
+beach = Sprite(beach_asset, (40,40))
 # Original image is too big. Scale it to 1/10 its original size
 ball.scale = 0.1
 # custom attributes
 ball.dir = 1
 ball.go = True
+beach.scale = 0.1
+beach.dir = 2
+beach.go = True
 def reverse(b):
     b.dir *= -1
     pop.play()
@@ -36,7 +41,11 @@ def step():
         if ball.x + ball.width > SCREEN_WIDTH or ball.x < 0:
             ball.x -= ball.dir
             reverse(ball)
-# Handle the space key
+    if beach.go:
+        beach.x += beach.dir
+        if beach.x + beach.width > SCREEN_WIDTH or beach.x < 0:
+            beach.x -= beach.dir
+            reverse(beach)
 def spaceKey(event):
     ball.go = not ball.go
 
