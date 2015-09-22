@@ -16,7 +16,7 @@ noline = LineStyle(0, black)
 bg_asset = RectangleAsset(SCREEN_WIDTH, SCREEN_HEIGHT, noline, brown)
 cover_asset = RectangleAsset(600, 440, noline, green)
 bg = Sprite(bg_asset, (0,0))
-cover = Sprite(cover_asset, (40, 40))
+cover = Sprite(cover_asset, (20, 20))
 
 # A ball! This is already in the ggame-tutorials repository
 ball_asset = ImageAsset("images/orb-150545_640.png")
@@ -51,10 +51,10 @@ def mouseClick(event):
     pew1.play()
     reverse(ball)
     
+myapp = App(SCREEN_WIDTH, SCREEN_HEIGHT)
 # Set up event handlers for the app
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 myapp.listenKeyEvent('keydown', 'r', reverseKey)
 myapp.listenMouseEvent('click', mouseClick)
 
-myapp = App(SCREEN_WIDTH, SCREEN_HEIGHT)
 myapp.run(step)
