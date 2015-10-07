@@ -1,10 +1,15 @@
-class Circle(object):
-    def __init__(self, radius):
-        self.r = radius
-    
-    def area(self):
-        return 3.14 * self.r * self.r
+from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame
 
-circle = Circle(2)
-print(circle.r)
-print(circle.area())
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
+
+class SpaceGame(App):
+    def __init__(self, width, height):
+        super().__init__(width, height)
+        black = Color(0, 1)
+        noline = LineStyle(0, black)
+        bg_asset = RectangleAsset(SCREEN_WIDTH, SCREEN_HEIGHT, noline, black)
+        bg = Sprite(bg_asset, (0,0))
+        
+myapp = SpaceGame(SCREEN_WIDTH, SCREEN_HEIGHT)
+myapp.run()
