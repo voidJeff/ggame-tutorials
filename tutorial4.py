@@ -27,7 +27,8 @@ class SpaceShip(Sprite):
         if self.thrust == 1:
             self.setImage(self.thrustframe)
             self.thrustframe += 1
-            self.x
+            self.x += 2
+            self.y += 2
             if self.thrustframe == 4:
                 self.thrustframe = 1
         else:
@@ -39,6 +40,11 @@ class SpaceShip(Sprite):
     def thrustOff(self, event):
         self.thrust = 0
         
+    def rotateLeft(self, event):
+        self.vr = 0.01
+        
+    def rotateRight(self, event):
+        self.vr = -0.01
 class SpaceGame(App):
     def __init__(self, width, height):
         super().__init__(width, height)
