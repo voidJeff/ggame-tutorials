@@ -1,5 +1,5 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame
-
+import math
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 
@@ -7,7 +7,7 @@ class SpaceShip(Sprite):
     asset = ImageAsset("images/four_spaceship_by_albertov_with_thrust.png",
         Frame(227,0,292-227,125), 4, 'vertical')
 
-    def __init__(self, position):
+    def __init__(self, position, angle):
         super().__init__(SpaceShip.asset, position)
         self.vx = 0
         self.vy = 0
@@ -21,11 +21,13 @@ class SpaceShip(Sprite):
         SpaceGame.listenKeyEvent("keydown", "right arrow", self.rotateRight)
         SpaceGame.listenKeyEvent("keyup", "right arrow", self.rrOff)
         self.fxcenter = self.fycenter = 0.5
+        self.angle = angle = 0
         
     def step(self):
         self.x -= self.vx
         self.y -= self.vy
         self.rotation += self.vr
+        self.angle += self.vr
         if self.thrust == 1:
             self.setImage(self.thrustframe)
             self.thrustframe += 1
@@ -38,14 +40,14 @@ class SpaceShip(Sprite):
         
     def thrustOn(self, event):
         self.thrust = 1
-        self.vx = 1
+        self.vx = cos(math.pi
 
     def thrustOff(self, event):
         self.thrust = 0
         self.vx = 0
         
     def rotateLeft(self, event):
-        self.vr = 
+        self.vr = 0.01
         
     def lrOff(self,  event):
         self.vr = 0
