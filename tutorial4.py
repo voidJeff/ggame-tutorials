@@ -40,7 +40,7 @@ class SpaceShip(Sprite):
         
     def thrustOn(self, event):
         self.thrust = 1
-        self.vx = cos(math.pi
+        self.vx = cos(math.pi * self.angle)
 
     def thrustOff(self, event):
         self.thrust = 0
@@ -58,7 +58,7 @@ class SpaceShip(Sprite):
     def rrOff(self,  event):
         self.vr = 0
 class SpaceGame(App):
-    def __init__(self, width, height):
+    def __init__(self, width, height, angle):
         super().__init__(width, height)
         black = Color(0, 1)
         noline = LineStyle(0, black)
