@@ -47,13 +47,13 @@ class SpaceShip(Sprite):
     def rotateLeft(self, event):
         self.vr = 0.01
         
-    def self.lrOff(self,  event):
+    def lrOff(self,  event):
         self.vr = 0
         
     def rotateRight(self, event):
         self.vr = -0.01
         
-    def self.rrOff(self,  event):
+    def rrOff(self,  event):
         self.vr = 0
 class SpaceGame(App):
     def __init__(self, width, height):
