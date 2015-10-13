@@ -36,10 +36,16 @@ class SpaceShip(Sprite):
         
     def thrustOn(self, event):
         self.thrust = 1
-        if 0 < abs(self.rotation) < 0.5:
+        if 0 < self.rotation < -0.5:
             self.vx = math.sin(math.pi * abs(self.rotation))
             self.vy = math.cos(math.pi * abs(self.rotation))
-        elif 0.5 <= abs(self.rotation) < 1
+        elif -0.5 <= self.rotation <= -1:
+            self.vx = math.sin(math.pi * self.rotation)
+            self.vy = -1*math.cos(math.pi * self.rotation)
+        elif 0 <= self.rotation < 0.5:
+            self.vx = -1*math.sin(math.pi * self.rotation)
+            self.vy = math.cos(math.pi * self.rotation)
+        elif 0.5 <= self.rotation <= 1:
             self.vx = -1*math.sin(math.pi * self.rotation)
             self.vy = -1*math.cos(math.pi * self.rotation)
 
