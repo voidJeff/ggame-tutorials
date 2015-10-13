@@ -40,8 +40,8 @@ class SpaceShip(Sprite):
             self.vx = math.sin(math.pi * self.rotation)
             self.vy = math.cos(math.pi * self.rotation)
         else:
-            self.vx = -1*math.cos(math.pi * self.rotation)
-            self.vy = -1*math.sin(math.pi * self.rotation)
+            self.vx = -1*math.sin(math.pi * self.rotation)
+            self.vy = -1*math.cos(math.pi * self.rotation)
 
     def thrustOff(self, event):
         self.thrust = 0
