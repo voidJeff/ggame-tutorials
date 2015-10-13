@@ -40,14 +40,14 @@ class SpaceShip(Sprite):
             self.vx = math.sin(math.pi * abs(self.rotation))
             self.vy = math.cos(math.pi * abs(self.rotation))
         elif -0.5 <= self.rotation <= -1:
-            self.vx = math.sin(math.pi * self.rotation)
-            self.vy = -1*math.cos(math.pi * self.rotation)
+            self.vx = math.sin(math.pi * abs(self.rotation))
+            self.vy = -1*math.cos(math.pi * abs(self.rotation))
         elif 0 <= self.rotation < 0.5:
-            self.vx = -1*math.sin(math.pi * self.rotation)
-            self.vy = math.cos(math.pi * self.rotation)
+            self.vx = -1*math.sin(math.pi * abs(self.rotation))
+            self.vy = math.cos(math.pi * abs(self.rotation))
         elif 0.5 <= self.rotation <= 1:
-            self.vx = -1*math.sin(math.pi * self.rotation)
-            self.vy = -1*math.cos(math.pi * self.rotation)
+            self.vx = -1*math.sin(math.pi * abs(self.rotation))
+            self.vy = -1*math.cos(math.pi * abs(self.rotation))
 
     def thrustOff(self, event):
         self.thrust = 0
