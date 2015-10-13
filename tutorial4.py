@@ -23,14 +23,12 @@ class SpaceShip(Sprite):
         self.fxcenter = self.fycenter = 0.5
         
     def step(self):
-        self.x -= self.vx
+        self.x += self.vx
         self.y -= self.vy
         self.rotation += self.vr
         if self.thrust == 1:
             self.setImage(self.thrustframe)
             self.thrustframe += 1
-            self.x -= 2
-            self.y -= 2
             if self.thrustframe == 4:
                 self.thrustframe = 1
         else:
@@ -38,8 +36,12 @@ class SpaceShip(Sprite):
         
     def thrustOn(self, event):
         self.thrust = 1
-        self.vx = math.cos(math.pi * self.rotation)
-        self.vy = math.sin(math.pi * self.rotation)
+        if self.rotation < 0.5:
+            self.vx = math.cos(math.pi * self.rotation)
+            self.vy = math.sin(math.pi * self.rotation)
+        else:
+            self.vx = -1*math.cos(math.pi * self.rotation)
+            self.vy = -1*math.sin(math.pi * self.rotation)
 
     def thrustOff(self, event):
         self.thrust = 0
