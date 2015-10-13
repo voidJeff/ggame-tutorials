@@ -7,7 +7,7 @@ class SpaceShip(Sprite):
     asset = ImageAsset("images/four_spaceship_by_albertov_with_thrust.png",
         Frame(227,0,292-227,125), 4, 'vertical')
 
-    def __init__(self, position, angle):
+    def __init__(self, position):
         super().__init__(SpaceShip.asset, position)
         self.vx = 0
         self.vy = 0
@@ -21,14 +21,11 @@ class SpaceShip(Sprite):
         SpaceGame.listenKeyEvent("keydown", "right arrow", self.rotateRight)
         SpaceGame.listenKeyEvent("keyup", "right arrow", self.rrOff)
         self.fxcenter = self.fycenter = 0.5
-        self.angle = angle = 0
         
-    def step(self, angle):
+    def step(self):
         self.x -= self.vx
         self.y -= self.vy
         self.rotation += self.vr
-        
-        self.angle += self.vr
         if self.thrust == 1:
             self.setImage(self.thrustframe)
             self.thrustframe += 1
@@ -41,7 +38,8 @@ class SpaceShip(Sprite):
         
     def thrustOn(self, event):
         self.thrust = 1
-        self.vx = math.cos(math.pi * self.angle)
+        self.vx = math.cos(math.pi * self.rotation)
+        self.vy = math.sin(math.pi * self.rotation)
 
     def thrustOff(self, event):
         self.thrust = 0
@@ -65,9 +63,9 @@ class SpaceGame(App):
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(SCREEN_WIDTH, SCREEN_HEIGHT, noline, black)
         bg = Sprite(bg_asset, (0,0,0))
-        SpaceShip((100,100,0))
-        SpaceShip((150,150,0))
-        SpaceShip((200,50,0))
+        SpaceShip((100,100))
+        SpaceShip((150,150))
+        SpaceShip((200,50))
         
     def step(self):
         for ship in self.getSpritesbyClass(SpaceShip):
